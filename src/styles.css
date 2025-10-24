@@ -1,0 +1,64 @@
+:root{
+  --anim-step-duration: 1.5s;
+}
+*{box-sizing:border-box}
+body,html,#root{height:100%;margin:0;font-family:IRANSansDN, Arial, sans-serif}
+.app{padding:18px;background:#111;min-height:100vh;color:#fff}
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.controls button{padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+.status{margin-left:12px;opacity:0.9}
+.slide{position:relative;height:70vh;border-radius:12px;overflow:hidden;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center}
+/* black background layer */
+.bg-layer{position:absolute;inset:0;background:rgba(0,0,0,0.95);opacity:0;transition:opacity 0.3s ease}
+.bg-layer.visible{opacity:1}
+.bg-layer.step1{animation:fadeIn var(--anim-step-duration) forwards}
+
+.characters{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;padding:40px;opacity:0;transform:translateY(20px)}
+.characters.visible{opacity:1;transform:none}
+.characters.step2{animation:appear var(--anim-step-duration) forwards}
+.left-character,.right-character{width:28%;display:flex;flex-direction:column;align-items:center;gap:6px}
+.left-character{align-items:flex-start}
+.right-character{align-items:flex-end}
+.char{width:220px;height:auto;display:block}
+.shadow{width:240px;opacity:0.9;filter:blur(2px);transform:translateY(8px)}
+
+.text-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:60px;opacity:0;transform:translateY(20px)}
+.text-bg.visible{opacity:1;transform:none}
+.text-bg.step3{animation:appear var(--anim-step-duration) forwards}
+.zbg{width:45%;max-width:700px;opacity:0.95}
+.zbg.left{object-fit:contain}
+.zbg.right{object-fit:contain}
+
+.texts{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:80px;opacity:0;transform:translateY(20px)}
+.texts.visible{opacity:1;transform:none}
+.texts.step4{animation:appear var(--anim-step-duration) forwards}
+.text{width:40%;display:flex;flex-direction:column;gap:10px}
+.text.left{text-align:left}
+.text.right{text-align:right}
+
+.quote{background:transparent;padding:18px;border-radius:8px;position:relative}
+.quote .de{font-family: 'ComicCustom', 'Comic Sans MS', sans-serif;font-size:29px;color:#FFFFFF}
+.quote .pron{font-family: 'IRANSansDN', sans-serif;font-size:19px;color:#00B0F0;margin-top:6px}
+.quote .mean{font-family: 'IRANSansDN', sans-serif;font-size:23px;color:#FFC000;margin-top:6px}
+
+/* underline effect */
+.quote.underlined .de{text-decoration:underline 4px #FFFFFF; text-underline-offset:6px}
+
+/* animations */
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes appear{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+.hint{margin-top:12px;color:#ccc}
+
+/* responsive */
+@media(max-width:900px){
+  .char{width:140px}
+  .zbg{width:48%}
+  .text{width:48%}
+}
